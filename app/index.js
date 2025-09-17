@@ -5,7 +5,7 @@ const app = express();
 port = 3000; 
 
 const client = createClient({
-    url: 'redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}'
+    url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`
 });
 
 client.on('error', (err) => console.log('Redis Client Error', err));
@@ -20,6 +20,17 @@ client.on('error', (err) => console.log('Redis Client Error', err));
         }
         await client.set("visits", parseInt(visits) + 1);
         res.send("Number of visits is: " + visits);
+    });
+
+    app.post("/users", async (req, res) => {
+        let username = req.query.username;
+        if (!username) {
+            return res.status(400).send("Username is required");
+        }
+        let password = req.query.password;
+        if (!password) {
+            return res.status(400).send("Password is required");
+        }
     });
 
     app.listen(port, () => {
