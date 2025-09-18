@@ -2,10 +2,13 @@
     "name": "basic-auth-demo", 
     "version": "0.1.0",
     "description": "A simple rest service demonstrating basic authentication.",
-    "main": "index.js",
+    "main": "server.js",
     "dependencies": {
-        "express": "^4.18.2",
-        "express-basic-auth": "^1.2.0", 
-        "redis": "5.8.2"
+        "bcrypt": "^6.0.0",
+        "express": "^5.1.0",
+        "express-basic-auth": "^1.2.1",
+        "node-fetch": "^3.3.2",
+        "redis": "^5.8.2",
+        "zxcvbn": "^4.4.2"
     }
 }
